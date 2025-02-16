@@ -1,7 +1,9 @@
+import { Heading } from "@chakra-ui/react";
+
 const page = () => {
   return (
     <>
-      <h1>Dashboard</h1>
+      <Heading>Dashboard</Heading>
     </>
   );
 };
