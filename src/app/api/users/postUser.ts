@@ -2,7 +2,7 @@ import axiosClient from "@/app/lib/axiosClient";
 import User from "@/app/model/user";
 
 interface NewUserData {
-  name: string;
+  username: string;
   email: string;
   password: string;
   password_confirmation: string;
@@ -11,7 +11,7 @@ interface NewUserData {
 const postUser = async (user: NewUserData) => {
     const res = await axiosClient.post('/users',{
         user: {
-            name: user.name,
+            username: user.username,
             email: user.email,
             password: user.password,
             password_confirmation: user.password_confirmation,
