@@ -1,3 +1,4 @@
+"use client";
 import useSignUp from "./hooks/useSignUp";
 import SignUpForm from "./views/SignUpForm";
 

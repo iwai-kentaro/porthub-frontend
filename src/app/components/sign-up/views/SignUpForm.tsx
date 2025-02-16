@@ -1,3 +1,4 @@
+"use client";
 import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 
 const SignUpForm = (props: {

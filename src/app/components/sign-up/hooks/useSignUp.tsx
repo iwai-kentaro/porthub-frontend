@@ -1,6 +1,6 @@
 "use client";
 import postUser from "@/app/api/users/postUser";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 const useSignUp = () => {
@@ -59,7 +59,7 @@ const useSignUp = () => {
       });
 
       alert("登録完了しました");
-      router.push("/signin");
+      router.push("/login");
     } catch (error) {
       console.error(error);
       alert("登録に失敗しました");
