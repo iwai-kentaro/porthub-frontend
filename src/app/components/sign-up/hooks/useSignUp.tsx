@@ -1,5 +1,7 @@
 "use client";
 import postUser from "@/app/api/users/postUser";
+import { useIsDisabledState } from "@/app/jotai/useIsDisabledState";
+import { useIsLoadingState } from "@/app/jotai/useIsLoadingState";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
@@ -8,8 +10,8 @@ const useSignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCon, setPasswordCon] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(true);
+  const { isDisabled, setIsDisabled } = useIsDisabledState();
+  const { isLoading, setIsLoading } = useIsLoadingState();
   const router = useRouter();
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const useSignUp = () => {
     } else {
       setIsDisabled(true);
     }
-  }, [name, email, password, passwordCon]);
+  }, [name, email, password, passwordCon, setIsDisabled]);
 
   const handleNameChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,7 +52,7 @@ const useSignUp = () => {
 
   const handleSubmit = useCallback(async () => {
     try {
-      setLoading(true);
+      setIsLoading(true);
       await postUser({
         username: name,
         email: email,
@@ -64,20 +66,20 @@ const useSignUp = () => {
       console.error(error);
       alert("登録に失敗しました");
     } finally {
-      setLoading(false);
+      setIsLoading(false);
       setName("");
       setEmail("");
       setPassword("");
       setPasswordCon("");
     }
-  }, [email, name, password, passwordCon, router]);
+  }, [email, name, password, passwordCon, router, setIsLoading]);
   return {
     handleSubmit,
     handleNameChange,
     handleEmailChange,
     handlePasswordChange,
     handlePasswordConChange,
-    loading,
+    isLoading,
     isDisabled,
   };
 };

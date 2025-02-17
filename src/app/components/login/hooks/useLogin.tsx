@@ -1,11 +1,13 @@
 import postAuth from "@/app/api/auth/postAuth";
+import { useIsDisabledState } from "@/app/jotai/useIsDisabledState";
+import { useIsLoadingState } from "@/app/jotai/useIsLoadingState";
 import { useCallback, useEffect, useState } from "react";
 
 const useLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const { isDisabled, setIsDisabled } = useIsDisabledState();
+  const { isLoading, setIsLoading } = useIsLoadingState();
 
   useEffect(() => {
     if (email && password) {
@@ -13,7 +15,7 @@ const useLogin = () => {
     } else {
       setIsDisabled(true);
     }
-  }, [email, password]);
+  }, [email, password, setIsDisabled]);
 
   const handleEmailChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
