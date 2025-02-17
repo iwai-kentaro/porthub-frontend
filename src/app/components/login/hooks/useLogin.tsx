@@ -43,7 +43,7 @@ const useLogin = () => {
       setPassword("");
       setIsLoading(false);
     }
-  }, [email, password]);
+  }, [email, password, setIsLoading]);
   return {
     handleEmailChange,
     handlePasswordChange,

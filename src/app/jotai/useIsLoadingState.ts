@@ -1,6 +1,6 @@
 import { atom, useAtom } from "jotai";
 
-export const useIsLoading = atom<boolean>(false);
+export const useIsLoading = atom(false);
 
 export const useIsLoadingState = () => {
   const [state, setState] = useAtom(useIsLoading);
