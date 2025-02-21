@@ -1,7 +1,7 @@
 "use client";
 import postUser from "@/app/api/users/postUser";
-import { useIsDisabledState } from "@/app/jotai/useIsDisabledState";
-import { useIsLoadingState } from "@/app/jotai/useIsLoadingState";
+import { useIsDisabledState } from "@/app/hooks/jotai/useIsDisabledState";
+import { useIsLoadingState } from "@/app/hooks/jotai/useIsLoadingState";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
