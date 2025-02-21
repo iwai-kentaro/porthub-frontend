@@ -1,7 +1,7 @@
 "use client";
 import useAuthChecker from "@/app/hooks/auth/useAuthChecker";
 import { useCurrentUserState } from "@/app/hooks/jotai/useCurrentUser";
-import { useRouter } from "next/navigation";
+import { useIsLoadingState } from "@/app/hooks/jotai/useIsLoadingState";
 import { useEffect } from "react";
 
 export default function ClientLayout({
@@ -10,26 +10,26 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   const { authCheck } = useAuthChecker();
-  const router = useRouter();
   const { currentUser } = useCurrentUserState();
+  const { isLoading } = useIsLoadingState();
 
   useEffect(() => {
-    console.log("🚀 useEffect 内で authCheck() を実行");
-    if (authCheck) {
-      authCheck();
-      console.log("✅ authCheck 実行完了");
-    } else {
-      console.error("❌ authCheck が定義されていない！");
-    }
+    authCheck();
   }, [authCheck]);
+
+  useEffect(() => {
+    if (isLoading) {
+      console.log("ローディング中");
+    }
+  }, [isLoading]);
 
   useEffect(() => {
     if (currentUser) {
       console.log("ログイン済み");
-      router.push("/dashboard");
     } else {
       console.log("未ログイン");
     }
-  }, [currentUser, router]);
+  }, [currentUser]);
+
   return <div>{children}</div>;
 }

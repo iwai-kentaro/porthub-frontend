@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useCurrentUserState } from "../jotai/useCurrentUser";
 import getMe from "@/app/api/auth/getMe";
 import { useIsLoadingState } from "../jotai/useIsLoadingState";
@@ -8,6 +8,12 @@ const useAuthChecker = () => {
   const { setIsLoading } = useIsLoadingState();
 
   const authCheck = useCallback(async () => {
+    const token = localStorage.getItem("JWT");
+    if (!token) {
+      setCurrentUser(undefined);
+      return;
+    }
+
     try {
       setIsLoading(true);
       const res = await getMe();
@@ -21,10 +27,6 @@ const useAuthChecker = () => {
       setIsLoading(false);
     }
   }, [setCurrentUser, setIsLoading]);
-
-  useEffect(() => {
-    authCheck();
-  }, [authCheck]);
 
   return { authCheck };
 };
