@@ -1,21 +1,10 @@
-import Loading from "@/app/components/utility/Loading";
-import { Button, Text } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 
-const LogoutButton = (props: {
-  handleLogout: () => void;
-  isLoading: boolean;
-}) => {
-  const { handleLogout, isLoading } = props;
+const LogoutButton = (props: { handleLogout: () => void }) => {
+  const { handleLogout } = props;
   return (
     <>
-      {isLoading ? (
-        <>
-          <Loading />
-          <Text>ログアウト中</Text>
-        </>
-      ) : (
-        <Button onClick={handleLogout}>ログアウト</Button>
-      )}
+      <Button onClick={handleLogout}>ログアウト</Button>
     </>
   );
 };
