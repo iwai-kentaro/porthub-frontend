@@ -7,7 +7,7 @@ const SignUpForm = (props: {
   handleEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handlePasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handlePasswordConChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  loading: boolean;
+  isLoading: boolean;
   isDisabled: boolean;
 }) => {
   const {
@@ -16,12 +16,12 @@ const SignUpForm = (props: {
     handleEmailChange,
     handlePasswordChange,
     handlePasswordConChange,
-    loading,
+    isLoading,
     isDisabled,
   } = props;
   return (
     <>
-      {loading && <p>loading...</p>}
+      {isLoading && <p>loading...</p>}
       <Box
         maxW="sm"
         borderWidth="1px"

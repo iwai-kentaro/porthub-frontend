@@ -28,28 +28,33 @@ const LoginForm = (props: {
         p={4}
       >
         {isLoading && <p>loading...</p>}
-        <form onSubmit={handleSubmit} action="">
-          <FormControl isRequired>
-            <FormLabel>メールアドレス</FormLabel>
-            <Input
-              type="email"
-              onChange={handleEmailChange}
-              placeholder="メールアドレス"
-              value={email}
-            />
-          </FormControl>
-          <FormControl isRequired>
-            <FormLabel>パスワード</FormLabel>
-            <Input
-              type="password"
-              onChange={handlePasswordChange}
-              value={password}
-            />
-          </FormControl>
-          <Button type="submit" disabled={isDisabled} mt={4} colorScheme="teal">
-            ログイン
-          </Button>
-        </form>
+
+        <FormControl isRequired>
+          <FormLabel>メールアドレス</FormLabel>
+          <Input
+            type="email"
+            onChange={handleEmailChange}
+            placeholder="メールアドレス"
+            value={email}
+          />
+        </FormControl>
+        <FormControl isRequired>
+          <FormLabel>パスワード</FormLabel>
+          <Input
+            type="password"
+            onChange={handlePasswordChange}
+            value={password}
+          />
+        </FormControl>
+        <Button
+          onClick={handleSubmit}
+          type="submit"
+          disabled={isDisabled}
+          mt={4}
+          colorScheme="teal"
+        >
+          ログイン
+        </Button>
       </Box>
     </>
   );

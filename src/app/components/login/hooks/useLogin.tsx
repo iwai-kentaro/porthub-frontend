@@ -1,11 +1,15 @@
 import postAuth from "@/app/api/auth/postAuth";
+import { useIsDisabledState } from "@/app/hooks/jotai/useIsDisabledState";
+import { useIsLoadingState } from "@/app/hooks/jotai/useIsLoadingState";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 const useLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const { isDisabled, setIsDisabled } = useIsDisabledState();
+  const { isLoading, setIsLoading } = useIsLoadingState();
+  const router = useRouter();
 
   useEffect(() => {
     if (email && password) {
@@ -13,7 +17,7 @@ const useLogin = () => {
     } else {
       setIsDisabled(true);
     }
-  }, [email, password]);
+  }, [email, password, setIsDisabled]);
 
   const handleEmailChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +36,10 @@ const useLogin = () => {
     try {
       setIsLoading(true);
       const res = await postAuth({ email, password });
-      console.log(res);
+
+      localStorage.setItem("JWT", res);
+
+      router.push("/dashboard");
     } catch (error) {
       console.error(error);
       alert("ログインに失敗しました");
@@ -41,7 +48,7 @@ const useLogin = () => {
       setPassword("");
       setIsLoading(false);
     }
-  }, [email, password]);
+  }, [email, password, router, setIsLoading]);
   return {
     handleEmailChange,
     handlePasswordChange,
