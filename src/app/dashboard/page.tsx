@@ -1,14 +1,11 @@
-import LogoutContainer from "@/app/components/logout/LogoutContainer";
-import UserContainer from "@/app/components/user/UserContainer";
-import { Heading } from "@chakra-ui/react";
+import SideHeader from "@/app/components/side-header/SideHeader";
+import { Box } from "@chakra-ui/react";
 
-const page = () => {
+const DashboardPage = () => {
   return (
-    <>
-      <Heading>Dashboard</Heading>
-      <UserContainer />
-      <LogoutContainer />
-    </>
+    <Box>
+      <SideHeader />
+    </Box>
   );
 };
-export default page;
+export default DashboardPage;

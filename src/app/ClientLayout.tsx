@@ -1,16 +1,14 @@
 "use client";
 import useAuthChecker from "@/app/hooks/auth/useAuthChecker";
-import { useCurrentUserState } from "@/app/hooks/jotai/useCurrentUser";
 import { useIsLoadingState } from "@/app/hooks/jotai/useIsLoadingState";
 import { useEffect } from "react";
-
+import { Box } from "@chakra-ui/react";
 export default function ClientLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const { authCheck } = useAuthChecker();
-  const { currentUser } = useCurrentUserState();
   const { isLoading } = useIsLoadingState();
 
   useEffect(() => {
@@ -23,13 +21,5 @@ export default function ClientLayout({
     }
   }, [isLoading]);
 
-  useEffect(() => {
-    if (currentUser) {
-      console.log("ログイン済み");
-    } else {
-      console.log("未ログイン");
-    }
-  }, [currentUser]);
-
-  return <div>{children}</div>;
+  return <Box>{children}</Box>;
 }

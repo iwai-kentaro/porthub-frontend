@@ -1,12 +1,11 @@
-"use client";
-import { Heading, Link } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
+import TopContainer from "./components/top/TopContainer";
 
 export default function Home() {
   return (
     <>
       <Heading>TOPページ</Heading>
-      <Link href="/login">ログイン</Link>
-      <Link href="/dashboard">Dashboard</Link>
+      <TopContainer />
     </>
   );
 }
