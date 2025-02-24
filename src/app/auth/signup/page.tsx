@@ -2,7 +2,7 @@
 import SignUpContainer from "@/app/components/sign-up/SignUpContainer";
 import { Heading } from "@chakra-ui/react";
 
-const page = () => {
+const SignUpPage = () => {
   return (
     <>
       <Heading>ユーザー登録</Heading>
@@ -10,4 +10,4 @@ const page = () => {
     </>
   );
 };
-export default page;
+export default SignUpPage;

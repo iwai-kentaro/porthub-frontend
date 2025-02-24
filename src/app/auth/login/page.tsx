@@ -1,7 +1,7 @@
+import LoginContainer from "@/app/components/login/LoginContainer";
 import { Heading } from "@chakra-ui/react";
-import LoginContainer from "../components/login/LoginContainer";
 
-const page = () => {
+const LoginPage = () => {
   console.log("MyComponent がレンダリングされました");
 
   return (
@@ -11,4 +11,4 @@ const page = () => {
     </>
   );
 };
-export default page;
+export default LoginPage;

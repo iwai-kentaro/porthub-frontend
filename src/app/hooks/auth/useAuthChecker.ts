@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useCurrentUserState } from "../jotai/useCurrentUser";
+import { useCurrentUserState } from "../jotai/useCurrentUserState";
 import getMe from "@/app/api/auth/getMe";
 import { useIsLoadingState } from "../jotai/useIsLoadingState";
 
