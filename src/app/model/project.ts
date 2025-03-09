@@ -7,7 +7,7 @@ class Project {
     public description: string,
     public tag: string[],
     public portfolioUrl: string,
-    public image: File | undefined,
+    public image: string | File | undefined,
     public userId: number
   ) {}
 
@@ -18,7 +18,7 @@ class Project {
       json.description,
       json.tag,
       json.portfolio_url,
-      json.image,
+      json.image_url,
       json.user_id
     );
   };

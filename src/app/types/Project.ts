@@ -4,7 +4,7 @@ type ProjectType = {
   description: string;
   tag: string[];
   portfolio_url: string;
-  image: File | undefined;
+  image_url: string | File | undefined;
   user_id: number;
 };
 
