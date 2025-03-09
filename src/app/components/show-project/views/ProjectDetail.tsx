@@ -8,7 +8,7 @@ const ProjectDetail = (props: {
   const { project, handleClick } = props;
 
   if (!project) {
-    return <Box>プロジェクトが見つかりません</Box>;
+    return <Box>loading...</Box>;
   }
 
   return (
