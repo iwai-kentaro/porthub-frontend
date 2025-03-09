@@ -1,5 +1,5 @@
 import Project from "@/app/model/project";
-import { Box, HStack, Image, Stack, Text, Tag } from "@chakra-ui/react";
+import { Box, HStack, Image, Stack, Text, Tag, Link } from "@chakra-ui/react";
 
 const ListProject = (props: { projects: Project[] }) => {
   const { projects } = props;
@@ -21,36 +21,38 @@ const ListProject = (props: { projects: Project[] }) => {
             cursor="pointer"
             alignItems="flex-start"
           >
-            <Box w={40} h={40}>
-              <Image
-                src={project.image?.toString()}
-                w={40}
-                h={40}
-                objectFit="cover"
-                alt={project.title}
-              />
-            </Box>
-            <Box flex={1} overflow="hidden" pl={4}>
-              <Stack>
-                <HStack
-                  borderBottom="3px solid"
-                  borderColor="gray.300"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  pb={2}
-                >
-                  <Stack>
-                    <Text>{project.title}</Text>
-                  </Stack>
-                  <HStack>
-                    {project.tag.map((tag) => (
-                      <Tag key={tag}>{tag}</Tag>
-                    ))}
+            <Link href={`/dashboard/project-list/project-detail/${project.id}`}>
+              <Box w={40} h={40}>
+                <Image
+                  src={project.image?.toString()}
+                  w={40}
+                  h={40}
+                  objectFit="cover"
+                  alt={project.title}
+                />
+              </Box>
+              <Box flex={1} overflow="hidden" pl={4}>
+                <Stack>
+                  <HStack
+                    borderBottom="3px solid"
+                    borderColor="gray.300"
+                    alignItems="center"
+                    justifyContent="space-between"
+                    pb={2}
+                  >
+                    <Stack>
+                      <Text>{project.title}</Text>
+                    </Stack>
+                    <HStack>
+                      {project.tag.map((tag) => (
+                        <Tag key={tag}>{tag}</Tag>
+                      ))}
+                    </HStack>
                   </HStack>
-                </HStack>
-                <Text noOfLines={2}>{project.description}</Text>
-              </Stack>
-            </Box>
+                  <Text noOfLines={2}>{project.description}</Text>
+                </Stack>
+              </Box>
+            </Link>
           </HStack>
         ))}
       </Stack>

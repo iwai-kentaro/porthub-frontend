@@ -9,7 +9,6 @@ const useListProjects = () => {
       const res = await getProjects();
 
       setProjects(res);
-      console.log("res", res);
     } catch (error) {
       console.error(error);
     }

@@ -8,8 +8,7 @@ const useLogout = () => {
   const handleLogout = useCallback(async () => {
     try {
       setIsLoading(true);
-      const res = await deleteAuth();
-      console.log(res);
+      await deleteAuth();
       router.push("/");
     } catch (error) {
       console.error(error);
